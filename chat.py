@@ -1,16 +1,16 @@
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
-# LangChain이 지원하는 다른 채팅 모델을 사용합니다. 여기서는 Ollama를 사용합니다.
-llm = ChatOllama(model="EEVE-Korean-10.8B:latest")
+# 수정: 모델명 변경
+llm = ChatOllama(model="kwangsuklee/SEOKDONG-llama3.1_korean_Q5_K_M")
 
-# Prompt 설정
+# 프롬프트 설정 최적화 (선택 사항)
 prompt = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are a helpful AI Assistant. Your name is '기가지니'. You must answer in Korean.",
+            "당신은 도움이 되는 AI 비서입니다. 반드시 한국어로 자연스럽게 답변해야 합니다.",
         ),
         MessagesPlaceholder(variable_name="messages"),
     ]
